@@ -1,4 +1,5 @@
 import {
+  Box,
   Container,
   Flex,
   IconButton,
@@ -14,12 +15,16 @@ export default function Navbar() {
   return (
     <Flex as="nav" h={16} align="center" bg="green.500" color="white">
       <Container maxW="container.xl">
-        <Flex align="center" justify="space-between">
+        <Flex align="center" gap={8}>
           <Link href="/">
             <Text fontWeight={600} cursor="pointer" fontSize="xl">
               provisiond
             </Text>
           </Link>
+          <Flex flexGrow={1} gap={3}>
+            <Link href="/">Dashboard</Link>
+            <Link href="/hosts">Hosts</Link>
+          </Flex>
           <IconButton
             aria-label="Theme toggle"
             icon={<SunIcon />}

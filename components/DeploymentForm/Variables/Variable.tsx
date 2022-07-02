@@ -49,9 +49,7 @@ export default function Variable({
       <FormControl>
         <FormLabel>Default value</FormLabel>
         <Input
-          {...register(`variables.${index}.defaultValue`, {
-            required: true,
-          })}
+          {...register(`variables.${index}.defaultValue`)}
           defaultValue={variable.defaultValue}
         />
       </FormControl>

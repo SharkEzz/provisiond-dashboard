@@ -83,11 +83,13 @@ export default function IndexPage({
                   </Td>
                   <Td>
                     <HStack>
-                      <IconButton
-                        icon={<CheckIcon />}
-                        aria-label="Launch deployment"
-                        colorScheme="green"
-                      />
+                      <Link href={`/deployment/start/${deployment.id}`}>
+                        <IconButton
+                          icon={<CheckIcon />}
+                          aria-label="Launch deployment"
+                          colorScheme="green"
+                        />
+                      </Link>
                       <IconButton
                         icon={<SettingsIcon />}
                         aria-label="Launch deployment"
