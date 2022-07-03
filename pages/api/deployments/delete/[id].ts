@@ -6,12 +6,12 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   if (req.method !== 'DELETE') {
-    res.status(405).json({ error: 'method not allowed' });
+    res.status(405).json({ ok: false });
     return;
   }
   const { id } = req.query;
 
-  await fs.rm(`./deployments/deployment_${id}.json`);
+  await fs.rm(`./data/deployments/deployment_${id}.json`);
 
   res.status(200).json({ ok: true });
 }

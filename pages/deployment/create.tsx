@@ -40,7 +40,7 @@ export default function CreateDeployment() {
   });
 
   const onSubmit = async (data: DeploymentType) => {
-    const res = await fetch('/api/save_deployment', {
+    const res = await fetch('/api/deployments/add', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

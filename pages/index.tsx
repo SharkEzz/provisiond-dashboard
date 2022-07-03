@@ -29,7 +29,7 @@ export default function IndexPage({
   const router = useRouter();
   const toast = useToast();
   const deleteDeployment = async (id: number) => {
-    const deleteRes = await fetch(`/api/delete_deployment/${id}`, {
+    const deleteRes = await fetch(`/api/deployments/delete/${id}`, {
       method: 'DELETE',
     });
     if (deleteRes.status !== 200) {

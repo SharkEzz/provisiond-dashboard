@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import DeploymentType from '../types/Deployment';
 
 export default async function loadDeployments() {
-  const rawDeployments = await fs.readdir('./deployments');
+  const rawDeployments = await fs.readdir('./data/deployments');
 
   const deployments: DeploymentType[] = [];
 
@@ -12,7 +12,7 @@ export default async function loadDeployments() {
         return;
       }
       const data = await fs.readFile(
-        `./deployments/${deploymentFileName}`,
+        `./data/deployments/${deploymentFileName}`,
         'utf8',
       );
       deployments.push(JSON.parse(data));
