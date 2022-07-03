@@ -8,6 +8,7 @@ specifiers:
   '@types/node': 18.0.0
   '@types/react': 18.0.14
   '@types/react-dom': 18.0.5
+  '@types/slug': ^5.0.3
   '@typescript-eslint/eslint-plugin': ^5.30.3
   '@typescript-eslint/parser': ^5.30.3
   eslint: ^7.32.0 || ^8.2.0
@@ -45,6 +46,7 @@ devDependencies:
   '@types/node': 18.0.0
   '@types/react': 18.0.14
   '@types/react-dom': 18.0.5
+  '@types/slug': 5.0.3
   '@typescript-eslint/eslint-plugin': 5.30.3_xuuykav7urhdozug7htlfgar3u
   '@typescript-eslint/parser': 5.30.3_4x5o4skxv6sl53vpwefgt23khm
   eslint: 8.19.0
@@ -1306,6 +1308,10 @@ packages:
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
+
+  /@types/slug/5.0.3:
+    resolution: {integrity: sha512-yPX0bb1SvrpaGlHuSiz6EicgRI4VBE+LO7IANlZagQwtaoKjLLcZc8y6s13vKp41mYvMCSzjtObxvU7/0JRPaA==}
+    dev: true
 
   /@typescript-eslint/eslint-plugin/5.30.3_xuuykav7urhdozug7htlfgar3u:
     resolution: {integrity: sha512-QEgE1uahnDbWEkZlidq7uKB630ny1NN8KbLPmznX+8hYsYpoV1/quG1Nzvs141FVuumuS7O0EpqYw3RB4AVzRg==}

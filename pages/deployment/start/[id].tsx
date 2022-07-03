@@ -14,27 +14,33 @@ import { NextPageContext } from 'next';
 import { useForm } from 'react-hook-form';
 import Layout from '../../../components/Layout';
 import DeploymentType from '../../../types/Deployment';
+import HostType from '../../../types/Host';
 import loadDeployment from '../../../utils/loadDeployment';
+import loadHosts from '../../../utils/loadHosts';
 
 export default function StartDeployment({
   deployment,
+  hosts,
 }: {
   deployment: DeploymentType;
+  hosts: Pick<HostType, 'name' | 'slug'>[];
 }) {
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data: unknown) => console.log(data);
+  const onSubmit = async (data: unknown) => {
+    console.log(data);
+  };
 
   return (
     <Layout title={`Start deployment : ${deployment.name}`}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <VStack align="flex-start" spacing={6}>
           <Text fontSize="xl">Variables</Text>
-          {deployment.variables.map((variable) => (
+          {deployment.variables.map((variable, index) => (
             <FormControl key={`variable_${variable.name}`}>
               <FormLabel>{variable.name}</FormLabel>
               <Input
-                {...register(`variables.${variable.name}`)}
+                {...register(`variables.${index}`)}
                 defaultValue={variable.defaultValue}
               />
             </FormControl>
@@ -42,8 +48,14 @@ export default function StartDeployment({
           <Divider />
           <Text fontSize="xl">Hosts</Text>
           <HStack>
-            <Checkbox {...register('hosts.prod')}>Prod</Checkbox>
-            <Checkbox {...register('hosts.develop')}>Develop</Checkbox>
+            {hosts.map((host) => (
+              <Checkbox
+                key={`host.${host.slug}`}
+                {...register(`hosts.${host.slug}`)}
+              >
+                {host.name}
+              </Checkbox>
+            ))}
           </HStack>
           <Divider />
           <Button alignSelf="flex-end" type="submit" colorScheme="green">
@@ -58,6 +70,12 @@ export default function StartDeployment({
 export async function getServerSideProps(context: NextPageContext) {
   const { id } = context.query;
 
+  const hosts = await loadHosts();
+  const filteredHosts = hosts?.map((host) => ({
+    name: host.name,
+    slug: host.slug,
+  }));
+
   const deployment = await loadDeployment(Number(id));
   if (!deployment) {
     throw new Error('Deployment not found');
@@ -66,6 +84,7 @@ export async function getServerSideProps(context: NextPageContext) {
   return {
     props: {
       deployment,
+      hosts: filteredHosts,
     },
   };
 }
